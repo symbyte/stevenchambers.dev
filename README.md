@@ -83,7 +83,7 @@ To publish a post, set `draft: false`, commit, and push to `main`. Check the **D
 
 In the repository's **Settings → Pages**, use **GitHub Actions** as the source and `stevenchambers.dev` as the custom domain. The custom domain is configured in Pages settings, not a `CNAME` file; GitHub ignores that file for custom Actions deployments. Keep Astro's `base` unset because the custom domain serves the site at `/`.
 
-DNS is managed at Porkbun. Use these records (leave the host blank for the apex in Porkbun):
+DNS is managed at Porkbun and configured with the following records, each with a 600-second TTL (leave the host blank for the apex in Porkbun):
 
 | Type | Host | Value |
 | --- | --- | --- |
@@ -95,6 +95,6 @@ DNS is managed at Porkbun. Use these records (leave the host blank for the apex 
 
 Preserve the existing Proton Mail MX, SPF, DKIM, and DMARC records. No nameserver change is needed. Do not add wildcard records. Configure the custom domain in GitHub before pointing DNS at Pages.
 
-Once DNS propagates and GitHub issues the certificate, enable **Enforce HTTPS**. `.dev` domains require HTTPS in browsers. GitHub redirects `www` to the configured apex domain when both DNS records are set up. Verify the homepage, `/blog/`, `/rss.xml`, `/sitemap-index.xml`, and a missing page after deployment.
+GitHub has issued a certificate for both `stevenchambers.dev` and `www.stevenchambers.dev`, and **Enforce HTTPS** is enabled. HTTP redirects to HTTPS, and `www` redirects to the apex domain. `.dev` domains require HTTPS in browsers. After DNS changes, some resolvers may temporarily retain an earlier empty answer even when authoritative DNS is correct. Verify the homepage, `/blog/`, `/rss.xml`, `/sitemap-index.xml`, and a missing page after deployment.
 
 For takeover protection, also [verify domain ownership](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) under your GitHub account's **Settings → Pages** and retain its TXT record. If you later disable Pages, remove the DNS records pointing to GitHub.
