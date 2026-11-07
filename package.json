@@ -1,0 +1,27 @@
+{
+  "name": "stevenchambers-dev",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development astro dev",
+    "new-post": "node scripts/new-post.mjs",
+    "test": "node --test scripts/*.test.mjs",
+    "check": "astro check",
+    "build": "astro check && cross-env NODE_ENV=production astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "cross-env": "^10.1.0",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { getPosts, formatDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  return (await getPosts()).map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+type Props = { post: CollectionEntry<'blog'> };
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const sections = headings.filter(({ depth }) => depth === 2);
+---
+<SiteLayout title={post.data.title} description={post.data.description} article noindex={post.data.draft}>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={post.data.pubDate.toISOString()} />
+    {post.data.updatedDate && <meta property="article:modified_time" content={post.data.updatedDate.toISOString()} />}
+  </Fragment>
+  <article class="article">
+    <header class="article-header">
+      <a class="back-link" href="/blog/">← All writing</a>
+      {post.data.draft && <p class="draft-notice">Local draft — excluded from production builds and RSS.</p>}
+      <div class="post-meta"><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time><span>Steven Chambers</span></div>
+      <h1>{post.data.title}</h1>
+      <p class="article-description">{post.data.description}</p>
+      {post.data.updatedDate && <p class="updated-date">Updated <time datetime={post.data.updatedDate.toISOString()}>{formatDate(post.data.updatedDate)}</time></p>}
+    </header>
+    {sections.length > 0 && <nav class="contents" aria-label="In this article"><p>Contents</p><ul>{sections.map((heading) => <li><a href={'#' + heading.slug}>{heading.text}</a></li>)}</ul></nav>}
+    <div class="prose"><Content /></div>
+    <div class="article-end"><a href="/blog/">← All posts</a><a href="/rss.xml">Subscribe via RSS</a></div>
+  </article>
+</SiteLayout>

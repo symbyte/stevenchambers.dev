@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/posts';
+
+type Props = { posts: CollectionEntry<'blog'>[] };
+const { posts } = Astro.props;
+---
+{posts.length > 0 ? (
+  <ol class="post-list">
+    {posts.map((post) => (
+      <li>
+        <div class="post-meta"><time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>{post.data.draft && <span class="draft-label">Local draft</span>}</div>
+        <div>
+          <h3><a href={'/blog/' + post.id + '/'}>{post.data.title}</a></h3>
+          <p>{post.data.description}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+) : (
+  <p class="empty-state">No posts published yet. <a href="/rss.xml">Subscribe via RSS</a>.</p>
+)}

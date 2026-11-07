@@ -1,0 +1,16 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../lib/posts';
+const posts = await getPosts();
+---
+<SiteLayout>
+  <header class="page-intro">
+    <h1>Steven Chambers</h1>
+    <p>Notes on software development.</p>
+  </header>
+  <section aria-labelledby="latest">
+    <div class="section-heading"><h2 id="latest">Recent posts</h2><a href="/blog/">All posts</a></div>
+    <PostList posts={posts.slice(0, 3)} />
+  </section>
+</SiteLayout>

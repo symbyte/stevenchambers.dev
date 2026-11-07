@@ -1,0 +1,10 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+const posts = await getPosts();
+---
+<SiteLayout title="Writing" description="Software development notes and articles by Steven Chambers.">
+  <header class="page-intro"><h1>Writing</h1><p>All posts, newest first.</p></header>
+  <PostList posts={posts} />
+</SiteLayout>
