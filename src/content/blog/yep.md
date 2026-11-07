@@ -2,7 +2,7 @@
 title: "Yep"
 description: "its a post"
 pubDate: 2026-11-07
-draft: true
+draft: false
 ---
 
 Just a post with some stuff in it. Trying to get used to typing with this new setup. I feel like it is a better approach, just takes some getting used to.
