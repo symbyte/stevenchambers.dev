@@ -1,4 +1,4 @@
 export const site = {
-  title: 'Steven Chambers',
+  title: 'Open to Modification',
   description: 'Notes on software development by Steven Chambers.',
 };

@@ -2,11 +2,12 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import PostList from '../components/PostList.astro';
 import { getPosts } from '../lib/posts';
+import { site } from '../site';
 const posts = await getPosts();
 ---
 <SiteLayout>
   <header class="page-intro">
-    <h1>Steven Chambers</h1>
+    <h1>{site.title}</h1>
     <p>Notes on software development.</p>
   </header>
   <section aria-labelledby="latest">

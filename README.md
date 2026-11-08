@@ -1,6 +1,6 @@
 # stevenchambers.dev
 
-Steven Chambers’s static development blog, built with Astro and Markdown. No runtime server, database, external fonts, or client-side JavaScript is needed for the published site.
+**Open to Modification** — notes on software development by Steven Chambers. Built with Astro and Markdown. No runtime server, database, external fonts, or client-side JavaScript is needed for the published site.
 
 ## Local development
 
@@ -64,7 +64,7 @@ Drafts and their Git history are public source files in this repository, even th
 - `astro.config.mjs`: canonical domain, static output, sitemap, syntax theme.
 - `src/site.ts`: site title and description.
 - `src/styles/global.css`: compact single-column layouts and system fonts; `:root` defines the default dark theme with saturated blue (`#5d8fff`) links and purple (`#a875ff`) accents, independent of system color preference.
-- `src/pages/index.astro`: homepage introduction.
+- `src/pages/index.astro`: shared blog title, “Notes on software development.” subtitle, and recent posts.
 - `src/layouts/SiteLayout.astro`: navigation, metadata, footer.
 - `/rss.xml`: published post summaries and links.
 - `/sitemap-index.xml`: generated sitemap index.

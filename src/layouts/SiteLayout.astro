@@ -20,7 +20,7 @@ const isWriting = Astro.url.pathname.startsWith('/blog/');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="author" content={site.title} />
+    <meta name="author" content="Steven Chambers" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -38,7 +38,7 @@ const isWriting = Astro.url.pathname.startsWith('/blog/');
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <header class="site-header">
-        <a class="wordmark" href="/" aria-label="Steven Chambers home">stevenchambers<span>.dev</span></a>
+        <a class="wordmark" href="/" aria-label={`${site.title} home`}>stevenchambers<span>.dev</span></a>
         <nav aria-label="Main navigation">
           <a href="/blog/" aria-current={isWriting ? 'page' : undefined}>Writing</a>
           <a href="/rss.xml">RSS</a>
