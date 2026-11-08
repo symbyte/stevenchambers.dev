@@ -63,7 +63,7 @@ Drafts and their Git history are public source files in this repository, even th
 
 - `astro.config.mjs`: canonical domain, static output, sitemap, syntax theme.
 - `src/site.ts`: site title and description.
-- `src/styles/global.css`: compact single-column layouts and system fonts; `:root` defines the default dark theme with blue links and purple accents, independent of system color preference.
+- `src/styles/global.css`: compact single-column layouts and system fonts; `:root` defines the default dark theme with saturated blue (`#5d8fff`) links and purple (`#a875ff`) accents, independent of system color preference.
 - `src/pages/index.astro`: homepage introduction.
 - `src/layouts/SiteLayout.astro`: navigation, metadata, footer.
 - `/rss.xml`: published post summaries and links.
